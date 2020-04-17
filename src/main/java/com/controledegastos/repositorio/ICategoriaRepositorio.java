@@ -11,6 +11,6 @@ import java.util.List;
 public interface ICategoriaRepositorio extends JpaRepository<Categoria, Long> {
 
     @Query("FROM Categoria c WHERE (c.codigo = :codigo OR :codigo = null)" +
-            "AND (c.nome = :nome OR :nome = null)")
+            "AND (c.nome LIKE %:nome% OR :nome = null)")
     List<Categoria> buscarTodos(Long codigo, String nome);
 }
